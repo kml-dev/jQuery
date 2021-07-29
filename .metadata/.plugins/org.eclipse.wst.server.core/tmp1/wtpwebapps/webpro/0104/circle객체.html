@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		height : auto;
+	}
+	input[type=button]{
+		width : auto;
+	}
+</style>
+<script>
+	rad = parseInt(prompt("반지름 입력:"));
+	PI = 3.141592;
+	circle = {
+			radius : rad,
+			
+			getArea : function(){
+				return 2*PI*this.radius;
+			},
+			getCircum : function(){
+				return PI*(this.radius*this.radius)
+			}
+			
+	};
+	function circle2(rad,name){
+		this.radius = rad;
+		this.name = name;
+		
+		this.getArea = function(){
+			return 2*PI*this.radius;
+		},
+		this.getCircum = function(){
+			return PI*(this.radius*this.radius)
+		}
+		this.print = function(){
+			res = "";
+			res = "circle정보 출력하기<br>";
+			res += `이름 : ${this.name} <br>`;
+			res += `반지름 : ${this.radius} <br>`;
+			res += `면적 : ${this.getArea()} <br>`;
+			res += `둘레 : ${this.getCircum()} <br>`;
+			document.getElementById("result2").innerHTML += res + "<br>";
+		}
+	}
+	
+	function proc1(){
+		circle.name = "원1";
+		res = "circle정보 출력하기<br>";
+		res += `이름 : ${circle.name} <br>`;
+		res += `반지름 : ${circle.radius} <br>`;
+		res += `면적 : ${circle.getArea()} <br>`;
+		res += `둘레 : ${circle.getCircum()} <br>`;
+		
+		document.getElementById("result1").innerHTML = res;
+	}
+	
+	function proc2(){
+		c2 = new circle2(parseInt(prompt("반지름 입력:")),prompt("이름 입력: "));
+		c2.print();
+	}
+	
+	function proc3(){
+		circle3 = {};
+		circle3.name = "원3"
+		circle3.radius = 15;
+		circle3.getArea = function(){
+			return 2*PI*circle3.radius;
+		}
+		circle3.getCircum = function(){
+			return PI*(circle3.radius*circle3.radius)
+		}
+		circle3.print = function(){
+			res = "";
+			res = "circle정보 출력하기<br>";
+			res += `이름 : ${circle3.name} <br>`;
+			res += `반지름 : ${circle3.radius} <br>`;
+			res += `면적 : ${circle3.getArea()} <br>`;
+			res += `둘레 : ${circle3.getCircum()} <br>`;
+			document.getElementById("result3").innerHTML += res + "<br>";
+		}
+		circle3.print();
+	}
+	
+</script>
+</head>
+<body>
+<pre>
+</pre>
+<input type="button" value="리터럴로 객체 생성"id="btn1" onclick="proc1()">
+<input type="button" value="생성자로 객체 생성"id="btn2" onclick="proc2()">
+<input type="button" value="속성 동적추가"id="btn3" onclick="proc3()">
+<br>
+<div id="result1"></div>
+<div id="result2"></div>
+<div id="result3"></div>
+
+</body>
+</html>

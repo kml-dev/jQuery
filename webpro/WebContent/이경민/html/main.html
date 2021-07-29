@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>홈페이지</title>
+<link rel="stylesheet" href="../css/kmshop.css">
+</head>
+<body id="main">
+	<header>
+		<h1 id="home1"><a href="../html/main.html">km shop</a></h1>
+	</header>
+	
+	<nav id="nav">
+		<ul>
+			<li><a href="">HOME</a></li>
+			<li><a href="">SHOPPING ABOUT</a></li>
+			<li><a href="">NEWS</a></li>
+			<li><a href="">MY ACCOUNT</a></li>
+			<li><a href="">CONTACTS</a></li>
+		</ul>
+	</nav>
+	
+	
+	<aside id="left">
+		<ul>
+			<li><a href="../html/computer.html" target="ifr">컴퓨터</a></li>
+			<li><a href="../html/clothing.html" target="ifr">의류</a></li>
+			<li><a href="../html/music.html" target="ifr">음악</a></li>
+			<li><a href="../html/movie.html" target="ifr">영화</a></li>
+			<li><a href="../html/sport.html" target="ifr">스포츠/레저</a></li>
+			<li><a href="../html/furniture.html" target="ifr">가구/인테리어</a></li>
+			<li><a href="../html/food.html" target="ifr">식품</a></li>
+		</ul>
+	</aside>
+	
+	<section id="myifr">
+		<article>
+			<iframe src="../html/computer.html" name="ifr">
+			</iframe>
+		</article>
+		<div id="right">
+			<p class="title">Shopping Cart</p>
+			<br><br>
+			<p>현재 쇼핑카트에 물품이 없습니다.</p>
+			<br>
+			<a href="../html/shopcart.html" target="ifr">쇼핑카트 보기</a>
+			<br><br>
+			<p class="title">Log in</p>
+
+			<form action="../??.jsp" method="post">
+				<label class="idpass">ID</label><br>
+				<input name="id"><br>
+				<label class="idpass">PASSWORD</label><br>
+				<input type="password" name="pass"><br>
+				<input type="submit" name="login" value="로그인">
+				<input type="reset"><br>
+				<br><br>
+				<a href="../html/register.html" target="ifr">회원가입</a>&nbsp;
+				<a href="..">비밀번호 찾기</a>
+			</form>
+		</div>		
+	</section>
+
+	<footer>
+		<h4>Copyright (c)2020 LKM</h4>
+	</footer>
+</body>
+</html>

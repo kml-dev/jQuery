@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		height: auto;
+	}
+</style>
+<script>
+	now = new Date();
+	
+	function proc1(){
+		mydate = new Date("2018,9,27");
+		res = "오늘 : " + now.toLocaleString() + "<br>";
+		res += "생일 : " + mydate.toLocaleString() + "<br>";
+		
+		ntime = now.getTime();
+		mytime = mydate.getTime();
+		
+		console.log(ntime,mytime);
+		times = ntime-mytime;
+		
+		res += `태어난 날로부터 : ${times/1000}초 지났습니다 <br>`
+		res += `태어난 날로부터 : ${times/1000/60}분 지났습니다 <br>`
+		res += `태어난 날로부터 : ${times/1000/60/60}시간 지났습니다 <br>`
+		res += `태어난 날로부터 : ${times/1000/60/60/24}일 지났습니다 <br>`
+		res += `태어난 날로부터 : ${times/1000/60/60/24/365}년 지났습니다 <br>`
+		
+		document.getElementById("result1").innerHTML = res;
+	}
+	
+	function proc2(){
+		// 100일 후의 getTime()구하기
+		day100 = 100 * 60 * 60 * 1000 * 24;
+		
+		// 오늘의 getTime()
+		nowTime = now.getTime();
+		
+		// 경과시간 구하기
+		times = day100 + nowTime;
+		
+		// times로 새로운 Date객체
+		now2 = new Date(times);
+		
+		res = `오늘 ${now.toLocaleString()} <br>`
+		res += `100일 후 : ${now2.toLocaleString()}<br>`
+		
+		document.querySelector("#result2").innerHTML = res;
+		
+	}
+</script>
+</head>
+<body>
+<pre>
+태어난 날로부터 현재까지 경과시간 구하기
+getTime() : millisec값
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc1()">
+<br>
+<div id="result1"></div>
+
+<pre>
+앞으로 100일 후 날짜 구하기
+100일 후의 getTime()구하기
+1일의 getTime() : 1 * 60 * 60 * 1000
+100일 후의 getTime() - 오늘의 getTime();  // millsec값
+
+새로운 날짜 생성
+now2 = new Date(times);
+now2.toLocaleString()
+
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc2()">
+<br>
+<div id="result2"></div>
+
+</body>
+</html>

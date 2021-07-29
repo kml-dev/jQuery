@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	ul{
+		border-top: 3px solid red;
+		border-bottom: 3px solid red;
+		padding : 20px;
+	}
+	li{
+		display: inline;
+		margin : 20px;
+	}
+	a{
+		letter-spacing: 5px;
+		text-decoration : none;
+	}
+	img{
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+	function show(a){
+		// img태그를 검색해서 ss배열 변수에 저장
+		// 배열이란 연속된 공간으로 여러개를 확보
+		ss = document.getElementsByTagName('img');
+		if(ss != null){
+			for(i = 0; i < ss.length; i++){
+			ss[i].style.display = "none";
+			}
+		}
+		
+		if(a == 1){
+			a = document.getElementById('img1');
+		}else if(a == 2){
+			a= document.getElementById('img2');
+		}else if(a == 3){
+			a = document.getElementById('img3');
+		}else{
+			a = document.getElementById('img4');
+		}
+		a.style.display = "block";		
+	}
+</script>
+</head>
+<body>
+	<ul>
+		<li><a onclick="show(1)" href="#">아메리카노</a></li>
+		<li><a onclick="show(2)" href="#">카푸치노</a></li>
+		<li><a onclick="show(3)" href="#">카페라떼</a></li>
+		<li><a onclick="show(4)" href="#">에스프레소</a></li>
+	</ul>
+	
+	<div>
+		<img id="img1" src="../images/아메리카노.jpg" alt="아메리카노">
+		<img id="img2" src="../images/카페라떼.jpg" alt="카페라떼">
+		<img id="img3" src="../images/카푸치노.jpg" alt="카푸치노">
+		<img id="img4" src="../images/에스프레소.jpg" alt="에스프레소">
+		
+	</div>
+
+</body>
+</html>

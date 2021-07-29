@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<title>type 속성2</title>
+	<link rel="stylesheet" href="../css/public.css" type="text/css">
+  </head>
+  <style>
+  	select{
+  		width : 200px;
+  	}
+  </style>
+
+  <body>
+  
+<pre>
+여러개의 파일에서 공통으로 같은 스타일을 지정하고자 한다
+css파일을 별도의 파일로 작성하고 저장한다
+적용하고자 하는 html또는 jsp에서
+&lt;link rel="stylesheet" href="../css/public.css" type="text/css">
+전송기능을 수행:
+  &lt;button type="submit">
+  &lt;input type="submit">
+전송 기능이 없는:
+  &lt;button type="button">
+  &lt;input type="button" value="확인">
+  어떤 새로운 기능을 부여 할 수 있다
+  	onclick="함수명()"
+</pre>
+
+  	<form action="type.jsp" method="post">
+  		<p>아이디<input type="text" name="id"></p>
+  		<p>비밀번호<input type="password" name="pass"></p>
+  		
+  		<p>자기소개</p>
+  		<p><textarea name="area" rows="10" cols="58"></textarea></p>
+  		
+  		<select size="5" multiple>
+  			<option name="" value="수영">수영하기</option> 
+  			<option name="" value="축구" selected="selected">축구하기</option>
+  			<option name="" value="농구">농구하기</option>
+  			<option name="" value="야구">야구하기</option>
+  			<option name="" value="탁구">탁구치기</option> 			
+  		</select>
+  		<br><br>
+  		
+  		<p><button type="button" onclick="alert('Hello')">확인</button>
+  		<input type="button" value="확인" onclick="alert('html')"></p>
+  		
+  		<p><button type="submit">전송</button>
+  		<input type="submit"></p>
+  		<input type="reset" value="초기화">
+  	</form>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.5.1.min.js" type="text/javascript"></script>
+<script>
+// 문서가 로드되면 
+$(function(){
+	arr = ["ajaxin.jpg","Anne-Marie(앤마리)-2002.jpg","chopa.jpg"];
+	
+	// 버튼을 클릭하면 
+	$('#btn1').on('click',function(){
+		rnd = Math.floor(Math.random()*arr.length);
+		
+		// 이미지를 생성
+		//vimg = $("<img src='../images/Koala.jpg' alt ='코알라' onclick='proc1()'>");
+		vimg = $('<img>',{
+							'src' : '../images/' + arr[rnd],
+							'alt' : arr[rnd],
+							'width':'100px',
+							'height': '80px',
+							'click' : function(){
+								$(this).css('border','2px solid red')
+							}
+		})
+		
+		
+		// result1에 출력
+		//document.getElementById("result1").textContent = vimg;
+		$('#result1').html(vimg);
+		
+	})
+	
+	$('#btn2').on('click',function(){
+		rnd = Math.floor(Math.random()*arr.length);
+		vimg = $('<img>',{
+							'src' : '../images/' + arr[rnd],
+							'alt' : arr[rnd],
+							'width':'100px',
+							'height': '80px',
+							'click' : function(){
+									$(this).css('border','2px solid red')
+							}
+		})
+		
+		vimg.appendTo('#result2');
+	})
+	
+	$('#btn3').on('click',function(){
+		arr = ["Hello","Happy","Good~","신나는 금요일","불타는 금요일","즐거운 주말"];
+		rnd = parseInt(Math.random()*arr.length);
+		myp = $('<p></p>',{
+				'class' : 'pp',
+				'text' : arr[rnd],
+				'click': function(){
+					$(this).css('color','red').css('font-size','1.5em');
+				}
+				
+		});
+		myp.appendTo('#result3');
+		
+	})
+})
+</script>
+<style type="text/css">
+	div{
+		height: auto;
+	}
+</style>
+</head>
+<body>
+<pre>
+$(function(){
+	// 버튼을 클릭하면 
+	$('#btn1').on('click',function(){
+		// 이미지를 생성
+		//vimg = $("&lt;img src='../images/Koala.jpg' alt ='코알라' onclick='proc1()'>");
+		vimg = $('&lt;img>',{
+							'src' : '../images/Koala.jpg',
+							'alt' : '코알라',
+							'click' : function(){
+								$(this).css('border','2px solid red')
+							}
+		})
+		
+		// result1에 출력
+		//document.getElementById("result1").textContent = vimg;
+		$('#result1').html(vimg);
+		
+	})
+	
+})
+html()  : 이전 이미지는 지워지고 새로운 이미지 출력
+</pre>
+<input value="확인" type="button" id="btn1">
+<br>
+<div id="result1"></div>
+
+<pre>
+버튼 클릭하면 p태그를 생성하고 
+p태그를 result2에 출력한다
+appendTo()는 추가한다
+</pre>
+
+<input value="확인" type="button" id="btn2">
+<br>
+<div id="result2"></div>
+
+<pre>
+버튼 클릭하면 새로운 p태그를 생성하여 result3에 출력한다
+</pre>
+<input value="확인" type="button" id="btn3">
+<br>
+<div id="result3"></div>
+
+</body>
+</html>

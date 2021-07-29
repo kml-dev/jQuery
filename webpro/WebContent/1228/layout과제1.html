@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		border : 5px solid blue;
+	}
+	header{
+		text-align : center;
+		border-radius : 20px;
+		background: yellow;
+		margin : 2px;
+		padding: 10px;
+	}
+	nav{
+		background: pink;
+		border-radius : 20px;
+		float: left;
+		margin : 1px;
+		width : calc(30% - 1%);
+		height: 420px;
+		padding-left: 10px;
+	}
+	section{
+		background: skyblue;
+		border-radius : 20px;
+		margin : 1px;
+		float: right;
+		width: calc(70% - 4%);
+		height: 400px;
+		padding: 10px;
+		padding-bottom: 10px;
+	}
+	footer{
+		text-align: center;
+		background: #1E90FF;
+		border-radius : 20px; 
+		margin : 2px;
+		padding: 10px;
+		clear : both;
+	}
+	img{
+		width : 100px;
+		height: 100px;
+	}
+	article{
+		border: 2px dotted green;
+		border-radius : 20px;
+		background: #B0C4DE;
+		margin : 30px;
+		padding: 0px 20px 20px 20px;
+				
+	}
+	
+	hr{
+		border : 3px dotted red;
+	}
+	
+	#li1{
+		color: white;
+	}
+
+	.li{
+		color: yellow;
+	}
+
+</style>
+</head>
+<body>
+	<div>
+	<header>
+		<h1>My Blog Page</h1>
+		<p>시멘틱 태그로 만들어진 페이지 입니다.</p>
+	</header>
+	
+	<nav>
+		<h1>Links</h1>
+		<ul>
+			<li id="li1">w3schools</li>
+			<li class="li">Naver</li>
+			<li class="li">Daum</li>
+			<img src="../images/spongebob.png" alt="스폰지밥">
+			<p>스폰지밥</p>
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<h3>Semantic Tags</h3>
+			시멘틱 요소(Sementic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다. 레이아웃을 만들 때 쓰는 것.
+			 의미가 있는 요소라면 div보다는 시멘틱 태그를 사용해준다.
+		</article>
+		
+		<article>
+			<h3>div와 span</h3>
+			div는 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span요소는 인라인 요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.
+		</article>
+	</section>
+	
+	<footer>
+		<p>Copyright (c)2020 Lee</p>
+	</footer>
+	</div>
+
+</body>
+</html>

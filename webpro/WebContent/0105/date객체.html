@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	#out{
+		height: 40px;
+		padding : 5px;
+		background: lightgray;
+	}
+</style>
+<script>
+window.onload = function (){
+	now1 = new Date(); // 현재 오늘 날짜가 생성됨
+	now2 = new Date(2131232133213);
+	now3 = new Date("1900,10,20");
+	now4 = new Date(1900,10-1,20);
+	res = `newDate() : ${now1} <br>`
+	res += `newDate(2131232133213) : ${now2} <br>`
+	res += `newDate("1900,10,20") : ${now3} <br>`
+	res += `newDate(1900,10-1,20) : ${now4} <br>`
+	
+	document.getElementById("result1").innerHTML = res;
+	
+	res = `${now1.toLocaleString()} <br>`;
+	res += `${now2.toLocaleDateString()} <br>`;
+	res += `${now3.toLocaleString()}<br>`;
+	res += `${now4.toLocaleString()}<br>`;
+	
+	document.getElementById("result2").innerHTML = res;
+	
+	out = document.getElementById("out");
+	setInterval(function(){
+		now1 = new Date();
+		out.innerHTML = now1.toLocaleString();
+	}, 1000)
+}
+</script>
+</head>
+<body>
+<pre>
+now1 = new Date(); // 현재 오늘 날짜가 생성됨
+now2 = new Date(2131232133213);
+now3 = new Date("1900,10,20");
+now4 = new Date(1900,10-1,20);
+
+
+</pre>
+<div id="out">
+
+</div>
+<br>
+<div id="result1"></div>
+<div id="result2"></div>
+
+</body>
+</html>

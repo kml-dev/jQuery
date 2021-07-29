@@ -1,0 +1,8 @@
+127.0.0.1 - - [17/Mar/2021:13:27:59 +0900] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:00 +0900] "GET /webpro/%EC%9D%B4%EA%B2%BD%EB%AF%BC/html/main.html HTTP/1.1" 200 1944
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:01 +0900] "GET /webpro/%EC%9D%B4%EA%B2%BD%EB%AF%BC/css/kmshop.css HTTP/1.1" 200 7476
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:01 +0900] "GET /webpro/%EC%9D%B4%EA%B2%BD%EB%AF%BC/html/computer.html HTTP/1.1" 200 1577
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:01 +0900] "GET /webpro/%EC%9D%B4%EA%B2%BD%EB%AF%BC/images/notebook.jpg HTTP/1.1" 200 69269
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:01 +0900] "GET /webpro/%EC%9D%B4%EA%B2%BD%EB%AF%BC/images/desktop.jpg HTTP/1.1" 200 192776
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:01 +0900] "GET /webpro/%EC%9D%B4%EA%B2%BD%EB%AF%BC/images/mac.jpg HTTP/1.1" 200 113635
+0:0:0:0:0:0:0:1 - - [17/Mar/2021:13:28:01 +0900] "GET /favicon.ico HTTP/1.1" 404 973

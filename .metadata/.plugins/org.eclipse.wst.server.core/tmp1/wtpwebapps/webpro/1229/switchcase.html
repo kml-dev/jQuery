@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		border : 3px solid blue;
+		height: 100px;
+		margin: 20px;
+		padding: 20px;
+		
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById("result");
+		
+// 		x = parseInt(prompt("첫번째 숫자 입력 : "));
+// 		y = parseInt(prompt("두번째 숫자 입력 : "));
+// 		z = prompt("연산자 입력 : ");
+		
+		switch(z){
+			case "+":
+				res = x+y;
+				break;
+			case "-":
+				res = x-y;
+				break;
+			case "*":
+				res = x*y;
+				break;
+			case "/":
+				res = x/y;
+				break;
+		}
+		
+		resStr = "입력 1: " + x + "<br>";
+		resStr += "입력 2 : " + y + "<br>";
+		resStr += "입력 3 : " + z + "<br>";
+		resStr += "결과 : " + res + "<br>";
+		
+		document.getElementById("result").innerHTML = resStr;
+		
+	}
+	
+	function grade() {
+		score = parseInt(prompt("점수를 입력 : ", "0~100사이"));
+		
+		switch(parseInt(score/10)){
+			case 10: case 9:
+				grade = "A학점입니다."
+				break;
+			case 8:
+				grade = "B학점입니다."
+				break;
+			case 7:
+				grade = "C학점입니다."
+				break;
+			case 6:
+				grade = "D학점입니다."
+				break;
+			default:
+				grade = "F학점입니다."				
+		}
+		str = "입력한 값 : " + score + "<br>"
+		str += "결과 : " + grade;
+		document.getElementById("result2").innerHTML = str;
+	}
+	
+</script>
+</head>
+<body>
+	<h1>연산자 비교</h1>
+	<p>두개의 정수와 한개의 연산자 입력</p>
+	<p>연산자 비교후 연산한다</p> 
+	<div id="result"></div>
+	<hr>
+	<h1>정수를 입력(0~100)</h1>
+	<p>점수에 따라 학점(A~F)</p>
+	<div id="result2"></div>
+	<button id="btn1" onclick="grade()">확인</button>
+</body>
+</html>

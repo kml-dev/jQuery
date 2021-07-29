@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		height: auto;
+	}
+</style>
+<script type="text/javascript">
+	function Rect(width,height,name){
+		// 속성 정의 
+		this.width = width;
+		this.height = height;
+		this.name = name;
+		this.getArea = function (){
+			return width * height;
+		}
+		this.getCircum = function (){
+			return (width + height)*2;
+		}
+		this.print = function (rr){
+			res = `Rect(${rr})정보 출력하기 <br>`;
+			res += `이름 : ${this.name} <br>`;
+			res += `가로 : ${this.width} <br>`;
+			res += `세로 : ${this.height} <br>`;
+			res += `면적 : ${this.getArea()} <br>`;
+			res += `둘레 : ${this.getCircum()} <br>`;
+			document.getElementById("result1").innerHTML += res + "<br>";
+		}
+	}
+	
+	function proc1(){
+		r1  = new Rect(5,6,"사각형 1");
+		r1.print("r1");
+		
+		r2  = new Rect(8,10,"사각형 2");
+		r2.print("r2");
+		
+	}
+</script>
+</head>
+<body>
+<pre>
+생성자를 이용한 객체 생성
+// 객체선언
+function Rect(w,h){}
+
+// 객체 생성
+var r1 = new Rect(4,5);
+var r2 = new Rect(6,7);
+var r3 = new Rect(8,9);
+
+// 정보 출력
+r1.width
+r1.height
+r1.getArea()
+r1.getCircum()
+</pre>
+<input type="button" id="btn1" value="확인" onclick="proc1()">
+<br>
+<div id="result1"></div>
+
+</body>
+</html>

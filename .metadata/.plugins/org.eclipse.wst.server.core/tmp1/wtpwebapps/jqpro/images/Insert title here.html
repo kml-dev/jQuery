@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://localhost/webpro/1229/jstest1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Insert title here</title>
+<link rel="stylesheet" href="./Insert title here_files/public.css" type="text/css">
+<script type="text/javascript">
+	var x = "Hello World";
+	
+	function proc1(){
+		// 이미 생성되어 있는 document를 다 지우고 새로운 document에 출력한다
+		// document.write(x);
+		
+		
+	}
+	
+</script>
+</head>
+<body>
+<pre>스크립트에서 document객체의 요소 (body의 요소)로 접근하기 위해서
+document.getElementById("id이름");
+document.getElementByTagName("태그이름");  : 배열을 리턴한다
+document.getElementByName("name");  : 배열을 리턴한다
+document.getElementByClassName("class이름")
+	
+ECMA2015 ECMA6 - 스크립트의 표준 번호
+document.querySelector()     : 같은 이름으로 여러개의 요소가 있어도 첫번째 요소만 접근 
+document.querySelectorAll()  : 같은 이름으로 되어 있는 모든 요소에 접근, 배열을 리턴한다.
+</pre>
+	<button id="but1" class="bb" type="button" onclick="proc1()">확인</button>
+
+</body></html>

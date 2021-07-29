@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="../js/board.js" type="text/javascript"></script>
+<style type="text/css">
+	p{
+		box-sizing : border-box;
+	}
+
+	.p1{
+		float : left;
+		width : 75%;
+		height: 20px;
+	}
+	
+	.p2{
+		float : right;
+		width : calc(24% - 1%);
+		height: 20px; 
+	}
+	
+	.p3{
+		clear: both;
+	}
+	
+	.reply{
+		height: 44px;
+		vertical-align: top;
+	}
+	
+	.panel-reply{
+		background: pink;
+		margin : 1px;
+		border : 1px solid gray;
+		padding: 5px;
+	}
+	
+	#write{
+		margin-left : 10%;
+		margin-top : 50px;
+	}
+	
+	label{
+		display : inline-block;
+		width : 80px;
+	}
+	
+	#modifyForm{
+		display: none;
+	}
+</style>
+<script type="text/javascript">
+reply = {};
+
+$(function(){
+	// 객체 생성 - board.writer[0] board.writer[1]
+	// board.title[0]
+	board = { 
+			// board.write.unshift(aa)
+			writer : ["홍길동","개나리","진달래"],
+			title : ["게시판 만들기","질문 있어요","어려워요"],
+			content : [
+						"안녕하세요<br>게시판 폼입니다<br>데이터가 없어서 아쉬워요",
+		   	            "게시판은 <br>어떻게 만들어요<br>궁금합니다<br>",
+		   	            "천천히 집중해서 잘 보아요 <br>어렵지 않아요"
+			           ],
+			date : ["2020.03.18", "2021.1.12", "2019.06.20"],
+			email : ["a123@naver.com","b123@gmail.com","c123@as.ac"]
+	}
+	
+	// 함수호출
+	listPro();
+	
+	// 이벤트 - delegate방식 - 동적으로 실행된 요소는 불가
+	$('.container').on('click','.action',function(){
+		cname = $(this).attr('name');
+		idx = $(this).attr('idx');
+		
+// 		alert(cname + ", "+ idx);
+		if(cname == "delete"){
+			// alert(idx + "번을 삭제합니다")
+			$(this).parents(".panel-default").remove();
+		}else if(cname == "modify"){
+			// alert(idx + "번을 수정합니다")
+			// 수정할 내용을 수정폼으로 출력
+			pa = $(this).parents('.panel');
+			
+			title = $(pa).find('a').text();
+			name = $(pa).find('.w').text();
+			email = $(pa).find('.e').text();
+			cont = $(pa).find('.c').html();
+			
+			// cont <br>을 \n으로 변경
+			cont = cont.replace(/<br>/g, '\n');
+			
+			// 수정을 위해서 modal창에 원래 내용들을 출력
+			$('#modModal #mname').val(name);
+			$('#modModal #mtitle').val(title);
+			$('#modModal #mmail').val(email);
+			$('#modModal #mcontent').val(cont);
+			
+			$('#modModal #mname').prop('disabled',true);
+			
+			
+		}else if(cname == "reply"){
+			//alert(idx + "번에 댓글을 답니다")
+			
+			// 입력한 내용을 가져온다
+			txt = $(this).parent().find('textarea').val();
+			
+			// 이름, 날짜
+			rname =  String.fromCharCode(parseInt(Math.random()* 26 + 65));
+			rname2 = String.fromCharCode(parseInt(Math.random()* 26 + 97));
+
+			today = new Date();
+			today = today.toLocaleDateString();
+			
+			// \r\n   <br> 바꾼다
+			txt = txt.replace(/\r/g,"").replace(/\n/g,"<br>");
+			
+			// 객체에 추가
+			reply.text = txt;
+			reply.name = rname + rname2;
+			reply.date = today;
+			
+			// 입력한 내용을 지우기
+			$(this).parent().find('textarea').val("");
+			
+			replyPro(this, reply);
+		}else if(cname == "r_modify"){
+// 			alert("댓글 수정");
+			
+			// 가져와서 저장해 놓는다
+			modifycont = $(this).parents('.panel-reply').find('.p3').html();
+			modifycont = modifycont.replace(/<br>/g,'\n');
+			
+			// $(this).parents('.panel-reply').find('.p3') - empty();
+			$(this).parents('.panel-reply').find('.p3').empty();
+			
+			$(this).parents('.panel-reply').find('.p3').append($('#modifyForm'));
+			
+			//저장해놓은 원래 내용을 #modifyForm #test 출력
+			$('#modifyForm #test').val(modifycont);
+			$('#modifyForm').show();
+			
+		}else if(cname == "r_delete"){
+			$(this).parents('.panel-reply').remove();
+		}else if(cname == "list"){
+// 			alert("조회수 증가");
+			
+			vclass = $(this).parents('.panel').find('.in').attr('class');
+			
+			// 닫힌상태에서 클릭하면 vclass = undefined일 때 조회수 증가
+			if(typeof vclass == 'undefined'){
+				// 조회수 증가
+				hit = $(this).parents('.panel').find('.h').text();
+				
+				hit = parseInt(hit) + 1;
+				$(this).parents('.panel').find('.h').text(hit);
+			}
+				
+		}
+		
+		
+	})
+	
+	// 이벤트 delegate
+// 	$('.container').on('click','.action',function(){
+// 		cname = $(this).attr('name');
+// 		idx = $(this).attr('idx');
+// 		alert(cname +"," + idx);
+// 	})
+	
+	// 글쓰기 버튼을 클릭하면 별도의 이벤트 등록은 없다
+	// data-toggle="modal" data-target="#myModal"에 의해서
+	// 모달창이 열림
+	
+	// 글쓰기 폼에서 확인버튼 클릭하면
+	$('#send').on('click',function(){
+		// 입력한 값 가져오기
+		nameValue = $('#name').val();
+		titleValue = $('#title').val();
+		contValue = $('#content').val();
+		mailValue = $('#mail').val();
+		
+		// 엔터를 <br>로 변경
+		contValue = contValue.replace(/\r/g,"").replace(/\n/g,"<br>");
+		
+		// board객체에 저장
+		board.writer.unshift(nameValue);
+		board.title.unshift(titleValue);
+		board.content.unshift(contValue);
+		board.email.unshift(mailValue);
+		
+		today = new Date();
+		today = today.toLocaleDateString();
+		board.date.unshift(today);
+		
+		$('#myModal').modal('hide');
+		
+		// listPro호출
+		listPro();
+	})
+	
+	// 댓글 수정폼에서 확인 버튼 클릭
+	$('#btnOk').on('click',function(){
+// 		alert('댓글을 수정합니다');
+		
+		// #modifyForm #test에 수정된 내용을 가져온다
+		// 엔터(\r\n)를 <br>로 변경
+		aa = $('#modifyForm #test').val();
+		aa = aa.replace(/\r/g,"").replace(/\n/g,"<br>");
+		
+		// p태그에 p3에 출력한다 - 수정폼의 부모
+		pp3 = $('#modifyForm').parent();
+		
+		// #modifyForm을 닫는다 - body태그로 폼을 이동
+		$('body').append($('#modifyForm'));
+		$('#modifyForm').hide();
+		
+		$(pp3).html(aa);
+
+	})
+	
+	// 댓글 수정폼에서 취소 버튼 클릭
+	$('#btnReset').on('click',function(){
+// 		alert('댓글 수정을 취소합니다');
+		
+		// 현재 수정폼의 부모를 검색
+		pp3 = $('#modifyForm').parent();
+		
+		// 수정폼을 닫기
+		
+		
+		// 수정폼을 다시 body로 보내기
+		$('body').append($('#modifyForm'));
+		
+		// 수정폼을 안보이게 감춘다
+		$('#modifyForm').hide();
+		
+		// 원래 .p3에 있었던 내용 - modifycont
+		// modifycont - (\n을 <br>로 변경)을 다시 그대로 출력한다.
+		aa = modifycont.replace(/\r/g,"").replace(/\n/g,"<br>");
+		$(pp3).html(aa);
+		
+	})
+	
+	$('#msend').on('click', function(){
+		// 입력한 값들을 가져온다
+		vtitle = $('#mtitle').val();
+		vemail = $('#mmail').val();
+		vcont = $('#mcontent').val();
+		
+		// \r\n을 <br>로 변경
+		vcont = vcont.replace(/\r/g,"").replace(/\n/g,"<br>");
+		
+		// 모달창 닫기
+		$('#modModal').modal('hide');
+		
+		// 게시글 화면을 수정 - 클릭한 수정 버튼이 기준이 된다
+		$(pa).find('a').text(vtitle);
+		$(pa).find('.e').text(vemail);
+		$(pa).find('.c').html(vcont);
+		
+		today = new Date();
+		today = today.toLocaleDateString();
+		$(pa).find('.d').text(today);
+		
+		
+		
+		
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<!-- 댓글 수정시 사용할 폼 -->
+<div id="modifyForm">
+	<textarea id="test" rows="5" cols="30"></textarea>
+	<input type="button" class="action" name="btnOk" value="확인" id="btnOk"> 
+	<input type="button" class="action" name="btnReset" value="취소" id="btnReset">
+</div>
+
+<div id="write">
+	<input type="button" value="글쓰기" data-toggle="modal" data-target="#myModal">
+</div>
+<div class="container">
+  <h2>Accordion Example</h2>
+  
+  
+</div>
+
+ <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">글 쓰기</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+			<label for="name">이름</label><input type="text" id="name"><br>
+			<label for="title">제목</label><input type="text" id="title"><br>
+			<label for="content">내용</label><br>
+			<textarea id="content" rows="10" cols="60"></textarea><br>
+			<label for="mail">이메일</label><input type="email" id="mail"><br>
+			<input value="확인" type="button" id="send">
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 글수정 Modal -->
+ <div id="modModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">글 수정하기</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+			<label for="mname">이름</label><input type="text" id="mname"><br>
+			<label for="mtitle">제목</label><input type="text" id="mtitle"><br>
+			<label for="mcontent">내용</label><br>
+			<textarea id="mcontent" rows="10" cols="60"></textarea><br>
+			<label for="mmail">이메일</label><input type="email" id="mmail"><br>
+			<input value="확인" type="button" id="msend">
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+   
+</body>
+</html>

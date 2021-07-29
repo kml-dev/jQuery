@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="../js/jquery.serializejson.min.js"></script>
+  
+<script type="text/javascript">
+$(function(){
+	let idReg = /^[a-z][a-zA-Z0-9]{3,11}$/;
+	let passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*]).{8,12}$/;
+	let nameReg =  /^[가-힣]{2,10}$/;
+	let telReg = /\d{3}-\d{4}-\d{4}/;
+	let mailReg = /^[a-zA-Z0-9]+@[a-z0-9_]+(\.[a-z]+){1,2}$/;
+	
+	$('#id').focus();
+	$('#btnid').on('click', function(){
+		idValue = $('#id').val().trim();
+		
+		if(!idReg.test(idValue)){
+			$('#idspan').html('아이디 형식을 확인하세요').css('color','red');
+			return false;
+		}
+		
+		$.ajax({
+			url : 'idcheck.jsp',
+			type: 'get',
+			data: {"id" : idValue},
+			success: function(res){
+				$('#idspan').html(res.sw).css('color','blue');
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);	
+			},
+			dataType : 'json'			
+		})
+	})
+	
+	// 우편번호 찾기 - 동이름 입력후 검색 버튼 클릭
+	$('#btndong').on('click',function(){
+		// 입력한 동이름 가져오기
+		dongValue = $('#dong').val().trim();
+		if(dongValue.length < 1){
+			alert('동이름 입력');
+			$('#dong').focus();
+			return false;
+		}
+		
+		$.ajax({
+			url : "dongSearch.jsp",
+			type: 'post',
+			data: {"dong" : dongValue},
+			success: function(res){
+				code = "<table border='1' class='table table-hover'>";
+				code += "<tr><td>우편번호</td>";
+				code += "<td>주소</td>";
+				code += "<td>번지</td></tr>";
+				
+				$.each(res, function(i){
+					code += "<tr class='ziptr'><td>"+ res[i].code +"</td>";
+					code += "<td>"+ res[i].addr+"</td>";
+					code += "<td>"+ res[i].bunji +"</td></tr>";
+				})
+				code += "</table>";
+				$('#result').html(code);
+			},
+			error : function(xhr){
+				alert('상태 : ' + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+	// 검색 주소에서 원하는 행을 클릭하면
+	$('#result').on('click','.ziptr',function(){
+		zipcode = $('td:eq(0)',this).text();
+		addr = $('td:eq(1)',this).text();
+		
+		$('#zip').val(zipcode);
+		$('#add1').val(addr);
+		
+		$('#dong').val('');
+		$('#result').empty();
+		$('#myModal').modal('hide');	
+	})
+	
+	$('#send').on('click',function(){
+		vdata = $('#ff').serializeJSON();
+
+		console.log(vdata)
+		$.ajax({
+			url : 'insert.jsp',
+			type: 'post',
+			data: vdata,
+			dataType : 'json',
+			success : function(res){
+				$('#subspan').html(res.sw).css('color','red');
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);	
+			}
+			
+		})
+	})
+	
+	$('#id').on('keyup',function(){
+		idValue = $('#id').val().trim();
+		
+		if(idValue.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("ID를 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		if(idReg.test(idValue)){
+			okpro(this);
+		}else{
+			nopro(this, "올바른 형식이 아닙니다");
+		}
+	})
+	
+	$('#pwd').on('keyup',function(){
+		passValue = $('#pwd').val().trim();
+						
+		passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*]).{8,15}$/;
+		
+		if(idValue.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("비밀번호를 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		if(passReg.test(passValue)){
+			okpro(this);
+		}else{
+			nopro(this, "올바른 형식이 아닙니다");
+		}
+	})
+	
+	$('#pwdc').on('keyup',function(){
+		passcValue = $('#pwdc').val().trim();
+		passValue = $('#pwd').val().trim();
+		
+		if(passValue == passcValue){
+			sp = $(this).parent().prev().find('span');
+			sp.html('비밀번호 일치').css('color','blue').css('font-size','0.5em');
+		}else{
+			nopro(this, "비밀번호와 일치하지 않습니다");
+		}
+	})
+	
+	$('#name').on('keyup',function(){
+		nameValue = $('#name').val().trim();
+		
+		if(nameValue.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("이름을 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		if(nameReg.test(nameValue)){
+			okpro(this);
+		}else{
+			nopro(this, "올바른 형식이 아닙니다");
+		}
+	})
+	
+	$('#birth').on('change',function(){
+		a = $('#birth').val().split('-');
+		
+		if(parseInt(a[0]) > 2009){
+			sp = $(this).parent().prev().find('span');
+			sp.html("10살 이상만 가능").css('color','red').css('font-size','0.5em');
+			return;
+		}else{
+			sp = $(this).parent().prev().find('span');
+			sp.html("사용 가능").css('color','blue').css('font-size','0.5em');					
+		}
+	})
+	
+	
+	$('#gender').on('change', function(){
+		if($('#gender option:selected').val() == 0){
+			sp = $(this).parent().prev().find('span');
+			sp.html("성별을 선택하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}else{
+			sp = $(this).parent().prev().find('span');
+			sp.html("사용 가능").css('color','blue').css('font-size','0.5em');			
+		}
+	})
+		
+	$('#tel').on('keyup',function(){
+		telValue = $('#tel').val().trim();
+		
+		if(telValue.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("전화번호를 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		if(telReg.test(telValue)){
+			okpro(this);
+		}else{
+			nopro(this, "올바른 형식이 아닙니다");
+		}
+	})
+	
+	$('#email').on('keyup',function(){
+		mailValue = $('#email').val().trim();
+		
+		if(mailValue.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("이메일을 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		
+		if(mailReg.test(mailValue)){
+			okpro(this);
+		}else{
+			nopro(this, "올바른 형식이 아닙니다");
+		}
+	})
+	
+	$('#zip').on('keyup',function(){
+		zipValue = $('#zip').val().trim();
+		
+		if(zipValue.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("우편번호를 검색하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		
+		sp = $(this).parent().prev().find('span');
+		sp.html('사용 가능한 형식').css('color','blue').css('font-size','0.5em');	
+	})
+	
+	$('#add1').on('keyup',function(){
+		add1Value = $('#add1').val().trim();
+		
+		if(add1Value.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("주소를 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		sp = $(this).parent().prev().find('span');
+		sp.html('사용 가능한 형식').css('color','blue').css('font-size','0.5em');	
+	})
+	
+	$('#add2').on('keyup',function(){
+		add2Value = $('#add2').val().trim();
+		
+		if(add1Value.length < 1){
+			sp = $(this).parent().prev().find('span');
+			sp.html("상세 주소를 입력하세요").css('color','red').css('font-size','0.5em');
+			return;
+		}
+		sp = $(this).parent().prev().find('span');
+		sp.html('사용 가능한 형식').css('color','blue').css('font-size','0.5em');	
+	})
+	
+	function okpro(ele){
+		sp = $(ele).parent().prev().find('span');
+		sp.html('사용 가능한 형식').css('color','blue').css('font-size','0.5em');
+	}
+	
+	
+	function nopro(ele, text){
+		sp = $(ele).parent().prev().find('span');
+		sp.html(text).css('color','red').css('font-size','0.5em');
+	}
+	
+})  	
+</script>
+<style type="text/css">
+	h2{
+		margin-left: 300px;
+	}
+	
+	.form-group{
+		border-bottom: 1px dotted lightgray;
+	}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>회원가입 폼</h2>
+  <br>
+  <form id="ff" class="form-horizontal">
+  
+  	<div class="form-group">
+      <label class="control-label col-sm-2" for="id">아이디 :<br><span></span></label>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" id="id" placeholder="Enter id" name="mem_id">
+      </div>
+      <button id="btnid" type="button" class="btn btn-primary btn-sm">ID 중복검사</button><span id="idspan"></span>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">비밀번호 :<br><span></span></label>
+      <div class="col-sm-2">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mem_pass">
+        <span></span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwdc">비밀번호 확인:<br><span></span></label>
+      <div class="col-sm-2">          
+        <input type="password" class="form-control" id="pwdc" placeholder="Enter password" name="mem_passc">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">이름 :<br><span></span></label>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="mem_name">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="birth">생년월일 :<br><span></span></label>
+      <div class="col-sm-2">
+        <input type="date" class="form-control" id="birth" placeholder="Enter name" name="mem_birth">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="gender">성별 :<br><span></span></label>
+      <div class="col-sm-2">          
+		<select class="form-control" id="gender">
+			<option value="0">선택하세요</option>
+        	<option value="1">남자</option>
+        	<option value="2">여자</option>       	
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="tel">휴대폰 번호 :<br><span></span></label>
+      <div class="col-sm-2">          
+        <input type="text" class="form-control" id="tel" placeholder="Enter tel" name="mem_hp">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">이메일 :<br><span></span></label>
+      <div class="col-sm-2">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="mem_mail">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="zip">우편번호 :<br><span></span></label>
+      <div class="col-sm-2">          
+        <input type="text" class="form-control" id="zip" placeholder="Enter zip" name="mem_zip">
+      </div>
+      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">번호검색</button><span id="idspan"></span>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="add1">주소 :<br><span></span></label>
+      <div class="col-sm-5">          
+        <input type="text" class="form-control" id="add1" placeholder="Enter add1" name="mem_add1">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="add2">상세 주소 :<br><span></span></label>
+      <div class="col-sm-5">          
+        <input type="text" class="form-control" id="add2" placeholder="Enter add2" name="mem_add2">
+      </div>
+    </div>
+       
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button id="send" type="button" class="btn btn-info btn-lg">Submit</button>
+        <span id="subspan"></span>
+      </div>
+    </div>
+    
+  </form>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">우편번호 검색</h4>
+      </div>
+      <div class="modal-body">
+        <h3>찾고자 하는 동을 입력하세요</h3>
+        <input type="text" id="dong">
+        <input type="button" value="검색" id="btndong">
+        <br><br>
+        <div id="result"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

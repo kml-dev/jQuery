@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+	 overflow : auto;
+	}
+</style>
+<script type="text/javascript">
+// 객체 선언 
+	rect = {}
+	function proc1(){
+		//객체 안에 속성을 추가
+		rect.name = "사각형";
+		rect.width = 12;
+		rect.height = 13;
+		
+		// 객체 안에 함수를 추가
+		rect.getArea = function(){
+			return rect.width * rect.height; 
+		}
+		rect.getCircum = function(){
+			return (rect.width + rect.height)*2;
+		}
+		
+		rect.print = function(){
+			res = "rect정보 출력하기 <br>";
+			res += `이름 : ${rect.name} <br>`;
+			res += `가로 : ${rect.width} <br>`;
+			res += `세로 : ${rect.height} <br>`;
+			res += `면적 : ${rect.getArea()} <br>`;
+			res += `둘레 : ${rect.getCircum()} <br>`;
+			document.getElementById("result1").innerHTML += res + "<br>";
+		}
+		
+		// 함수 호출
+		rect.print();
+		
+	}
+</script>
+</head>
+<body>
+<pre>
+객체 선언 - 속성과 함수 없이 객체 선언
+rect = {}
+</pre>
+<input type="button" value="확인" id="btn1" onclick="proc1()">
+<br>
+<div id="result1"></div>
+</body>
+</html>

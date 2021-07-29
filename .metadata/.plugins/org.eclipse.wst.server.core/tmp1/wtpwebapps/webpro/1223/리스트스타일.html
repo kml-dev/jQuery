@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css" type="text/css">
+<style type="text/css">
+	
+	div{
+		border: 1px solid blue;
+		margin : 10px 5px;
+		width : 150px;
+/* 		display : inline-block; */
+		float : left; 
+		
+	}
+	br{
+		clear : both;
+	}
+
+	#d1{
+		background: lightgreen;
+	}
+	#d2{
+		background: rgb(230,120,200);
+	}
+	#d1 ul{
+		list-style-type: circle;
+	}
+	
+	#d3 ul{
+		list-style-type: square;
+	}
+	
+	#d4 ul{
+		list-style-image: url(../images/check2.jpg)
+	}
+	#d6 ol{
+		list-style-type : upper-alpha;
+	}
+	#d7 ol{
+		list-style-type : upper-roman;
+	}
+	#d8 ol{
+		list-style-type : hangul;
+	}
+	#d9 ol{
+		list-style-type : korean-hangul-formal;
+	}
+	#d10 ol{
+		list-style-type : hangul-consonant;
+	}
+	ul{
+/* 		border: 1px solid green; */
+	}
+	li{
+/* 		border: 1px solid blue; */
+/* 		list-style-position: inside; */
+	}
+</style>
+
+<script>
+	function proc1(){
+		a = document.getElementsByTagName("div")[0];
+		a.style.display = "none";
+	}
+	function proc2(){
+		a = document.getElementsByTagName("div")[0];
+		a.style.display = "inline-block";
+		
+	}
+</script>
+
+</head>
+<body>
+<pre>
+스크립트에서 html태그요소 검색하기:
+a = document.getElementsByTagName("div")[0];
+
+스크립트에서 선택한 요소의 스타일 지정하기
+a.style.border="1px solid red"
+a.style.background="blue"
+div{
+		border: 1px solid blue;
+		margin : 10px 5px;
+		width : 150px;
+/* 		display : inline-block; */
+		float : left; 
+		
+	}
+</pre>
+	<button type="button" onclick="proc1()">감추기</button>
+	<button type="button" onclick="proc2()">보이기</button>
+	<br>
+	<div id="d1">
+		<h5>list-style-type : circle</h5>
+		<ul>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ul>
+	</div>
+	
+	<div id="d2">
+		<h5>list-style-type : disk</h5>
+		<ul>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ul>
+	</div>
+	
+	<div id="d3">
+		<h5>list-style-type : square</h5>
+		<ul>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ul>
+	</div>
+	
+	<div id="d4">
+		<h5>list-style-type : image</h5>
+		<ul>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ul>
+	</div>
+	<br>
+<pre>
+위쪽 div와 아래쪽 div를 분리해서 줄 바꾼다
+br{ clear : both; }
+</pre>
+	<div id="d5">
+		<h5>list-style-type : decimal</h5>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+	
+	<div id="d6">
+		<h6>list-style-type : upper-alpha</h6>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+	
+	<div id="d7">
+		<h6>list-style-type : upper-roman</h6>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+	
+	<div id="d8">
+		<h5>list-style-type : hangul</h5>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+	<br>
+	<div id="d9">
+		<h5>list-style-type : korean-hangul-formal</h5>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+	
+	<div id="d10">
+		<h5>list-style-type : hangul-consonant</h5>
+		<ol>
+			<li>아메리카노</li>
+			<li>카푸치노</li>
+			<li>카페라떼</li>
+			<li>에스프레소</li>
+		</ol>
+	</div>
+</body>
+</html>

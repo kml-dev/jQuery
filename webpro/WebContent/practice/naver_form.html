@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		text-align : center;
+		background : #f5f8f1;
+	}
+	fieldset{
+		border : none;
+	}
+	hr{
+		width : 455px;
+		margin-top : 20px;
+		border : 0.5px solid #c7eac7;
+	}
+	#lang{
+		margin-left : 720px;
+		height : 40px;
+	}
+	
+	#logo{
+		margin-bottom : 50px;
+	}
+	#alrelogin{
+		margin-right : 250px;
+	}
+	select{
+		width : 100px;
+		height: 30px;
+	}
+	input[type=text]{
+		width : 450px;
+		height : 40px;
+		border : 1px solid #e9f1de;
+	}
+	input[type=password]{
+		width : 450px;
+		height : 40px;
+		border : 1px solid #e9f1de;
+	}
+	input[type=submit]{
+		width : 455px;
+		height : 60px;
+		background : #9cdd6d;
+		border : 1px solid #e9f1de;
+	 	font-size: 1.2em;
+	 	color : white;
+	}
+	input[type=button]{
+		width : 225px;
+		height : 50px;
+		border : 1px solid #9cdd6d;
+		background : white;
+	}
+	h2{
+		margin-top : 50px;
+		margin-bottom : 30px;
+		font-size : 1.2em;
+	}
+	
+	a{
+		font-size : 14px;
+		color : #9cdc9c;
+	}
+</style>
+</head>
+<body>
+  <div id='lang'>
+  	<select size="">
+  		<option name="lang" selected="selected" value="Korean">한국어</option>
+  		<option name="lang" value="English">English</option>
+  		<option name="lang" value="chinese">中文(簡體)</option>
+  		<option name="lang" value="chinese2">中文(繁體)</option>
+  	</select>
+  </div>
+  
+  <fieldset>
+   <div id="logo">
+  	<h1><a href="http://www.naver.com"><img src="../images/naver.jpg" alt="NAVER"></a></h1>
+   </div>
+  
+   <div id="login">
+  	<form action=".jsp" method="post">
+  		<p><input type="text"name="id" value="아이디"></p>
+  		<p><input type="password" name="pass" value="비밀번호"></p>
+  		<p><input type="submit" value="로그인"></p>
+  		<span id="alrelogin"><input type="checkbox" name="alrelogin" value="on">로그인 상태 유지</span>
+  		<span id="protect">IP 보안<input type="checkbox" name="protect" value="on"></span>
+  		<hr>
+  		<h2>더욱 간편한 로그인</h2>
+  		<p><input type="button" value="QR코드 로그인" onclick="alert('아직 모르겠음')">
+  		<input type="button" value="일회용 번호 로그인" onclick="alert('이것도 마찬가지')"></p>
+  		<a href="아이디찾기사이트">아이디 찾기 </a><a href="비밀번호 찾기 사이트">| 비밀번호 찾기 |</a><a href="회원가입사이트"> 회원가입 </a>
+  	
+  	</form>
+   </div>
+  </fieldset>
+</body>
+</html>

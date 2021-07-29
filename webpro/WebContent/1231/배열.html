@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+	function proc1(){
+		var fruit = ["사과 ", "복숭아", "파인애플", "포도"]
+		result = document.querySelector("#result1");
+		print(fruit);
+	}
+	function proc2(){
+		var fruit = new Array("사과","복숭아","망고","딸기");
+		result = document.querySelector("#result2");
+		print(fruit);
+	}
+	function proc3(){
+		var fruit = new Array();
+		fruit[0] = "사과";
+		fruit[1] = "복숭아";
+		fruit[2] = "파인애플";
+		fruit[3] = "포도";
+		result = document.querySelector("#result3");
+		print(fruit);
+	}
+	function print(a){
+		var res = ""
+		for(i = 0; i < a.length; i++){
+			res += a[i]+"&nbsp&nbsp&nbsp&nbsp";
+		}
+		result.innerHTML = res;
+	}
+	
+</script>
+</head>
+<body>
+<pre>
+1. 리터럴로 배열 생성
+var fruit = ["사과 ", "복숭아", "파인애플", "포도"]
+</pre>
+
+<input type="button" value="확인" onclick="proc1()">
+<br>
+<div id="result1"></div>
+<br>
+
+<pre>
+2. 생성자로 배열 생성
+var fruit = new Array("사과","복숭아","망고","딸기");
+</pre>
+
+<input type="button" value="확인" onclick="proc2()">
+<br>
+<div id="result2"></div>
+<br>
+
+<pre>
+3. 리터럴로 배열 생성
+var fruit = new Array();
+fruit[0] = "사과";
+fruit[1] = "복숭아";
+fruit[2] = "파인애플";
+fruit[3] = "포도";
+
+</pre>
+
+<input type="button" value="확인" onclick="proc3()">
+<br>
+<div id="result3"></div>
+<br>
+ 
+</body>
+</html>

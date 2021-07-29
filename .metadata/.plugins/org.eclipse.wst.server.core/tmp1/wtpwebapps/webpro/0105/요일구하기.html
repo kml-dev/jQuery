@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+	function proc1(){
+		now = new Date();
+		res = "";
+		res += now.toLocaleString();
+		
+		a = now.getDay();  // a : 0(일요일) ~ 6(토요일)
+		
+		switch(a){
+		case 0:
+			res += "일요일";
+			break;
+		case 1:
+			res += "월요일";
+			break;
+		case 2:
+			res += "화요일";
+			break;
+		case 3:
+			res += "수요일";
+			break;
+		case 4:
+			res += "목요일";
+			break;
+		case 5:
+			res += "금요일";
+			break;
+		case 6:
+			res += "토요일"
+			break;
+		}
+		document.getElementById("result1").innerHTML = res;
+	}
+	
+	function proc2(){
+		now = new Date();
+		days = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+		res = now.toLocaleString() + "&nbsp;&nbsp;&nbsp;";
+		res += days[now.getDay()] + "입니다"
+		document.getElementById("result2").innerHTML = res; 
+		
+	}
+</script>
+</head>
+<body>
+<pre>
+now = new Date();
+a = now.getDay();  // a : 0(일요일) ~ 6(토요일)
+switch(a){
+		case 0:
+			res += "일요일";
+			break;
+		case 1:
+			res += "월요일";
+			break;
+		case 2:
+			res += "화요일";
+			break;
+		.
+		.
+		.
+		
+배열을 이용한 요일 구하기
+	days = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc1()">
+<input value="확인" type="button" id="btn1" onclick="proc2()">
+<br>
+<div id="result1"></div>
+<div id="result2"></div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		border: 1px solid blue;
+		height: 300px;
+		margin: 10px;
+	}
+</style>
+<script type="text/javascript">
+	function change(a) {
+		cr = parseInt(Math.random()*256);
+		cg = parseInt(Math.random()*256);
+		cb = parseInt(Math.random()*256);
+		
+		crr = cr.toString(16);
+		cbb = cg.toString(16);
+		cgg = cb.toString(16);
+		
+// 		a.style.background="rgb("+ cr + "," + cg + "," + cb +")"
+		a.style.background= "#" + crr + cbb + cgg;
+	}
+</script>
+</head>
+<body>
+	<div onclick="change(this)">
+	</div>
+	
+	<div onclick="change(this)">
+	</div>
+	
+	<div onclick="change(this)">
+	</div>
+	
+</body>
+</html>

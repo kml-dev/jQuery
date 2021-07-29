@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+	function proc1(){
+		rnd = parseInt(Math.random()*3);
+		com = ["가위","바위","보"];
+		vcom = com[rnd];
+		user = prompt("가위, 바위, 보 입력: ");
+		
+		res = `컴퓨터 : ${vcom} <br>`;
+		res += `사용자 : ${user} <br>`;
+		
+		if(vcom == user){
+			res += "비겼습니다.";	
+		}else if(user == "가위" && vcom == "보" || user == "바위"	&& vcom =="가위" ||user == "보"  && vcom == "바위"){
+			res += "유저가 이겼습니다.";
+		}else{
+			res += "컴퓨터가 이겼습니다.";
+		}
+		document.getElementById("result1").innerHTML = res;
+	}
+	
+	function proc2(){
+		arr = new Array();
+		
+		while(true){
+			rand = parseInt(Math.random() * 45 + 1)
+			a = arr.indexOf(rand);
+			
+			if(a < 0) arr.push(rand);
+			if(arr.length >= 6) break;
+		}
+		document.getElementById("result2").innerHTML = arr;
+	}
+</script>
+</head>
+<body>
+<pre>
+가위 바위 보 게임을 할 수 있는 프로그램을 작성하시오.
+(단, 컴퓨터는 랜덤을 이용하고, 사용자는 prompt로 입력 받아서 처리)
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc1()">
+<br>
+<div id="result1"></div>
+
+<pre>
+로또 번호를 생성하는 프로그램을 작성하시오.(1번 ~ 45번 중 6개의 번호를 추첨)
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc2()">
+<br>
+<div id="result2"></div>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		height: auto;
+	}
+</style>
+<script>
+	arr = ["사과","복숭아","참외","포도","바나나","사과","메론","파인애플","사과"];
+	
+	function proc1(){
+		res = "원래 배열 : " + arr + "<br>";
+		
+		//추가할 데이터를 입력
+		arr.push(prompt("추가할 과일 : "));
+		res += `추가 배열 : ${arr} <br>`;
+		print("result1");
+	}
+	
+	function proc2(){
+		res = "원래 배열 : " + arr + "<br>";
+		arr.pop();
+		
+		res += `뺀 배열 : ${arr} <br>`;
+		print("result2");
+	}
+	
+	function proc3(){
+		res = "원래 배열 : " + arr + "<br>";
+		arr.reverse();
+		res += `바뀐 배열 : ${arr} <br>`;
+		
+		print("result3");
+
+	}
+	
+	function proc4(){
+		res = "원래 배열 : " + arr + "<br>";
+		arr.sort();
+		res += `바뀐 배열 : ${arr} <br>`;
+		
+		print("result4");
+		
+	}
+	
+	function proc5(){
+		res = "원래 배열 : " + arr + "<br>";
+		newArr = arr.slice(arr.indexOf("사과")+1,arr.indexOf("바나나"));
+		res += `새로운 배열 : ${newArr} <br>`;
+		
+		print("result5");
+		
+	}
+
+	
+	function proc6(){
+		res = "원래 배열 : " + arr + "<br>";
+		
+		
+		}
+		
+		print("result6")
+	}
+	
+	function proc7(){
+		res = "원래 배열 : " + arr + "<br>";
+		
+		arr.splice(3,2, "딸기","감자","고구마");
+		res += `arr.splice(3,2, '딸기','감자','고구마'): ${arr} <br>`;
+		
+		print("result7");
+		
+	}
+	
+	function proc8(){
+		res = "원래 배열 : " + arr + "<br>";
+		arr.splice(2,0,"진달래","개나리","수선화");
+		res += `arr.splice(2, "진달래","개나리","수선화"); : ${arr} <br>`;
+		
+		print("result8");
+		
+	}
+	
+	function proc9(){
+		res = "원래 배열 : " + arr + "<br>";
+		arr.splice(4,1,"진달래","개나리","수선화");
+		res += `arr.splice(4,1,"진달래","개나리","수선화"); : ${arr} <br>`;
+		
+		print("result9");
+		
+	}
+	
+	function proc10(){
+		num = [1,2,3,4,5];
+		res = `arr의 길이 ${arr.length} <br>`;
+		res += `num의 길이 ${num.length} <br>`;
+		numArr = num.concat(arr);
+		res += `합친 배열 : ${numArr.length} <br>`;
+		res += numArr;
+		print("result10");
+		
+	}
+	function proc11(){
+		res = `arr의 길이 ${arr.length} <br>`;
+		
+		// 문자열로 변환
+		vjoin = arr.join("");
+		
+		for(i = 0; i < arr.length; i++){
+			res += i + "번째 : " + arr[i] + "<br>";
+		}
+		for(j = 0; j < vjoin.length; j++){
+			res += i + "번째 : " + vjoin[j] + "<br>";
+		}
+		print("result11");
+		
+	}
+	
+	function print(re){
+		document.getElementById(re).innerHTML = res;
+	}
+</script>
+</head>
+<body>
+<pre>
+arr.push(a,b..) : 배열 끝에 요소추가 
+arr.pop() : 마지막 요소 제거하고 리턴
+arr.reverse() : 배열 뒤집기
+arr.sort() : 사전순 정렬
+arr.slice(start, end) : start ~ end-1까지 새로운 배열로 만들기
+
+</pre>
+<input value="push" type="button" id="btn1" onclick="proc1()">
+<input value="pop" type="button" id="btn1" onclick="proc2()">
+<br>
+<div id="result1"></div>
+<div id="result2"></div>
+
+<input value="reverse" type="button" id="btn1" onclick="proc3()">
+<input value="sort" type="button" id="btn1" onclick="proc4()">
+<br>
+<div id="result3"></div>
+<div id="result4"></div>
+
+<input value="slice" type="button" id="btn1" onclick="proc5()">
+<input value="slice" type="button" id="btn1" onclick="proc6()">
+<br>
+<div id="result5"></div>
+<div id="result6"></div>
+
+<pre>
+splice : 배열을 수정, 삭제
+splice(3,2, 'A','B','C') : 3번째 위치에서 2개를 삭제하고 3번째 위치에 A,B,C를 삽입
+splice(2,0, 'A','B','C') : 2번째 위치에서 삭제하지 않고 'A','B','C')
+splice(4, 1) : 4번째 위치에서 1개를 삭제한다
+</pre>
+<input value="splice" type="button" id="btn1" onclick="proc7()">
+<input value="splice" type="button" id="btn1" onclick="proc8()">
+<input value="splice" type="button" id="btn1" onclick="proc9()">
+<br>
+<div id="result7"></div>
+<div id="result8"></div>
+<div id="result9"></div>
+<pre>
+concat : 여러개의 배열을 하나의 배열로 합니다.
+join : 하나의 배열을 문자열로 변환한다.
+</pre>
+<input value="concat" type="button" id="btn1" onclick="proc10()">
+<input value="join" type="button" id="btn1" onclick="proc11()">
+<br>
+<div id="result10"></div>
+<div id="result11"></div>
+
+</body>
+</html>

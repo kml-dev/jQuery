@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+
+	function input() {
+		var vname = prompt("이름을 입력하세요","한글로 입력");
+		
+		// id가 d1인 요소에 접근해서 d1에 저장한다
+		var vd1 = document.getElementById("d1");
+		// d1
+		
+		// 출력 - innerHTML, textContent
+		//vd1.innerHTML = "<strong>" + vname + "</strong>";
+		//vd1.textContent = "<strong>" + vname + "</strong>";
+		vd1.style.fontSize = "2em";
+		vd1.style.color = "blue";
+	}
+</script>
+</head>
+<body>
+<pre>
+1. 입력하기
+  var vname = prompt("이름을 입력하세요","한글로 입력");
+
+2. div요소에 출력하기 - id가 d1인 요소
+  var vd1 = document.getElementById("d1");
+
+3. 출력하기
+  출력 - innerHTML, textContent
+  vd1.innerHTML = vname;
+  
+출력내용중에 html태그가 포함되어 있을 때는 - innerHTML로 출력
+</pre>
+	<button type="button" onclick="input()">확인</button>
+	<h1>출력</h1>
+	<div id="d1"></div>
+</body>
+</html>

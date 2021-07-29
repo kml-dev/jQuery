@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+	function proc1(){
+		input = prompt("주민번호 입력:","123456-1234567");
+		
+		yy = input.substr(0,2);
+		mm = input.substr(2,2);
+		dd = input.substr(4,2);
+		
+		gg = input.substr(7,1);
+		
+		// 생년월일
+		if(gg == "3" || gg == "4") year = "20" + yy;
+		else if(gg == "1" || gg == "2") year = "19" + yy;
+		
+		res = `주민번호 : ${input} <br>`;
+		res += `생년월일 : ${year}년 ${mm}월 ${dd}일 <br>`;
+		
+		// 성별
+		if(gg == "1" || gg == "3") res += "성별 : 남자<br>";
+		else if(gg == "2" || gg == "4") res += "성별 : 여자<br>";
+		
+		// 나이 
+		today = new Date();
+		res += `나이 : ${today.getFullYear() - parseInt(year)} <br>`
+		
+		document.getElementById("result1").innerHTML = res;
+	}
+	
+	function proc2(){
+		ss = "234567892345";
+		input = prompt("주민번호 입력:","123456-1234567");
+		res = `주민 번호 : ${input}<br>`;
+		input = input.replace(/-/,"");
+		sum = 0;
+		
+		for(i = 0; i < input.length-1; i++){
+			sum += input.charAt(i)*ss.charAt(i);
+		}
+		
+		a1 = 11 - sum % 11;
+		if(a1 == 10) a1 = 0;
+		else if (a1 == 11) a1 = 1;
+		
+		nam = a1  % 10;
+		
+		
+			
+		if(input.charAt(input.length-1)==nam){
+			res += `마지막 자리 : ${nam} <br>유효한 주민번호입니다.`;		
+		}else{
+			res += `마지막 자리 : ${nam} <br>유효하지 않은 주민번호입니다.`;
+		}
+		
+		document.getElementById("result2").innerHTML = res;
+	}
+</script>
+</head>
+<body>
+<pre>
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc1()">
+<br>
+<div id="result1"></div>
+
+<pre>
+</pre>
+<input value="확인" type="button" id="btn1" onclick="proc2()">
+<br>
+<div id="result2"></div>
+
+</body>
+</html>

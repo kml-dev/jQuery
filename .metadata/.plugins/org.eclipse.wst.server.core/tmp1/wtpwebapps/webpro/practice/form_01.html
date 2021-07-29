@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<title>form 연습</title>
+	<style>
+		input[type=image]{
+			vertical-align : bottom;
+			width : 20px;
+			height : 20px;
+			border : 1px solid blue;
+		}
+	</style>
+</head>
+<body>
+  <div>
+  	<h1>form 전송 - post방식</h1>
+  	<form action="form01.jsp" method="post">
+  		<p>이름: <input type="text" name="name1" value="홍길동"></p>
+  		<p>전화번호: <input type="text" name="tel1" value="010-1234-5678"></p>
+  		<p>비밀번호: <input type="password" name="pass1"></p>
+  		<p>성별: <input type="radio" name="gender" value="남자" checked="checked">남자
+  				<input type="radio" name="gender" value="여자">여자</p>
+  		<p>취미: <input type="checkbox" name="hobby" value="운동">운동
+  				<input type="checkbox" name="hobby" value="영화">영화
+  				<input type="checkbox" name="hobby" value="음악">음악
+  				<input type="checkbox" name="hobby" value="독서">독서
+  				<input type="checkbox" name="hobby" value="게임">게임</p>
+  		<p>첨부파일: <input type="file" name="file"></p>
+  		<input type="submit" value="전송">
+  		<input type="image" src="../images/아메리카노.jpg">
+  		<input type="reset" value="취소">
+  		<input type="button" value="확인 " onclick="alert('전송을 눌러 제출하세요')">
+  	</form>
+  </div>	
+</body>
+</html>

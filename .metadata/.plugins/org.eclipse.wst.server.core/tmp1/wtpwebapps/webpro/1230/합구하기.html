@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+
+window.onload = function(){
+	sum = 0;
+	for(i = 1; i < 11; i++){
+		sum += i;
+	}
+	
+	document.getElementById("result").innerHTML = sum;
+}		
+	function sum2(){
+		num = parseInt(prompt());
+		sum = 0;
+		
+		for(i = 1; i <= num; i++){
+			sum += i;
+		}
+	    //res = document.getElementById("result2");
+	    res = document.querySelector("#result2");
+	    res.innerHTML = "1 ~ "+ num + "까지의 합 = "+ sum;
+	}
+
+
+</script>
+</head>
+<body>
+<pre>
+1~10까지의 합을 구한다
+</pre>
+
+	<div id="result"></div>
+	
+	<hr>
+<pre>
+버튼을 클릭하면 정수를 입력한다 - prompt()이용
+1 ~ 입력 받은 수까지의 합을 구한다
+</pre>
+	<button id="but1" onclick="sum2()">확인</button>
+	<div id="result2"></div>
+</body>
+</html>

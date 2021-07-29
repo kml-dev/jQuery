@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1{
+		margin : 30px 150px 10px;
+	}
+	label{
+ 		display : inline-block; 
+		width : 60px;
+		height: 30px;
+	}
+	fieldset{
+		padding : 20px;
+		width : 500px;
+		border : 3px solid blue;
+		margin-left : 50px;
+	}
+	div{
+		margin-top : 10px;
+	}
+</style>
+</head>
+<body>
+	<form action=".jsp" method="get">
+		<h1>이메일 전송화면</h1>
+		<fieldset>
+			<p><label>이름</label><input name="name" value="홍길동"></p>
+			<p><label>이메일</label><input name="email" value="asdf@asdf.com"></p>
+			<p>내용</p>
+			<textarea rows="10" cols="60" name="내용"></textarea><br>
+			
+			<div>
+			<input type="submit" value="전송">
+			<input type="reset" value="재설정">
+			</div>
+			
+		</fieldset>
+	</form>
+	
+	<hr>
+	
+	<form action=".jsp" method="post">
+		<h1>회원 가입 화면</h1>
+		<fieldset>
+			<p><label>이름</label><input name="name" value="">
+			<p><label>주소</label><input name="add" value="">
+			<p><label>이메일</label><input name="email" value=""></p>
+			
+			<input type="radio" name="gender">Male<br>
+			<input type="radio" name="gender">Female<br>
+			
+			<div>
+			<input type="submit" value="Send">
+			<input type="reset" value="원래대로">	
+			</div>		 
+		</fieldset>
+	</form>
+
+</body>
+</html>

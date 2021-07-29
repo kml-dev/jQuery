@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	header,footer,nav,section,article{
+		border: 1px solid gray;
+		border-radius: 50px;
+		margin : 1px;
+		box-size : border-box; // content-box
+		padding: 5px;
+	}
+	header{
+		width : 100%;
+		height: 100px;
+		background: #f1d9ee;
+	}
+	footer{
+		width : 100%;
+		height: 100px;
+		background: #d2faed;
+		clear : both;
+	}
+	nav{
+		height : 500px;
+		//width: 20%;
+		width : calc(20% - 1%);
+		background: #f1f1f1;
+		float: left;
+	}
+	section{
+		height: 500px;
+		//width: 78%;
+		width : calc(80% - 1%);
+		background: blue;
+		float: right;
+	}
+	article{
+		width : calc(100% - 2%);
+		height: calc(50% - 2%);
+		margin: 5px;
+		
+	}
+</style>
+</head>
+<body>
+	<header>
+	</header>
+	
+	<nav>
+	</nav>
+	
+	<section>
+		<article id="art1">
+		</article>
+		<article id="art2">
+		</article>
+	</section>
+	
+	<footer>
+	</footer>
+</body>
+</html>

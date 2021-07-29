@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		height: auto;
+	}
+</style>
+<script type="text/javascript">
+	function proc(){
+		
+		while(true){
+			// 정수를 입력
+			let input = parseInt(prompt());
+			
+			// 정수에 대한 구구단 출력
+			let res = "";
+			for(let i = 1; i < 10; i++){
+				// res += input + " X " + i + " = " + input*i+ "<br>";
+				res += `${input} X ${i} = ${input*i} <br>`
+			}
+			
+			// 출력 - result1에 res값을 출력
+			document.getElementById("result1").innerHTML += res;
+			
+			// 계속 여부 체크 - 리턴값은 true/false
+			let cont = confirm("계속하시겠습니까??")
+			if(!cont) break;
+		}
+		
+	}
+</script>
+</head>
+<body>
+<pre>
+backtick(``) : backquote, graveaccent 
+ECMAScript - es6 에서 제공
+
+하나의 문장안에서 변수와 문자를 backtick안에 같이 기술
+변수는 ${ }안에 기술한다
+
+템플릿 리터럴
+: javascript에서 backtick 문자를 사용하여 문자열을 표현한 것
+
+변수 선언
+var : 함수영역, 함수의 지역 변수
+let : 블럭 영역, 블럭의 지역 변수
+const: 값이 변하지 않는 수, 상수
+
+</pre>
+
+<input type="button" id="btn1" value="확인" onclick="proc()">
+<br>
+<div id="result1"></div>
+
+</body>
+</html>

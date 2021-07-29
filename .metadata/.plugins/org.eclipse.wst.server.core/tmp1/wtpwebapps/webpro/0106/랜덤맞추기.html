@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+	random = parseInt(Math.random()*100+1);
+	function proc1(){
+		cnt = 0;
+		running = true;
+		while(running){
+			input = prompt("숫자를 입력하세요 : ");
+			res = `랜덤 : ${random}<br>`;
+		
+			if(input > random){
+				alert("힌트 : 너무 큼");
+				cnt++;
+			}else if(input < random){
+				alert("힌트 : 너무 작음")
+				cnt++;
+			}else if(input == random){
+				cnt++;
+				res += "맞았습니다!<br>"
+				res += `몇 번만에 맞춤? : ${cnt}`
+				running = false;
+			}
+			document.getElementById("result1").innerHTML = res;
+		}
+	
+	}
+</script>
+</head>
+<body>
+<pre>
+</pre>
+<h1>Number Guess</h1>
+<p>1부터 100 사이의 숫자를 입력하시오.</p>
+<input id="num">
+<input value="숫자 추측" type="button" id="btn1" onclick="proc1()">
+<br>
+<div id="result1"></div>
+
+</body>
+</html>

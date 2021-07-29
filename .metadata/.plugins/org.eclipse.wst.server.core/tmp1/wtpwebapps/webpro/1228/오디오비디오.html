@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	iframe{
+		width : 500px;
+		height: 300px;
+		border: 1px solid gray;
+	}
+	video{
+		width: 500px;
+		height: 400px;
+		
+	}
+</style>
+</head>
+<body>
+<!-- 	<iframe src="" name="ifr"> -->
+		<audio src="../multi/old_pop.mp3" controls autoplay></audio>
+<!-- 	</iframe> -->
+
+	<br>
+	muted : 무음 자동재생<br>
+	동일 origin 도메인 내에서 유저 인터렉션 이벤트 발생시 유음 자동재생 - youtube<br>
+	<br>
+	<br>
+	<h1>video source</h1>
+	특허권과 유료화에 반대하는 브라우저에서는 mp4를 지원하지 않고 무료 제공되는 ogv파일을 재생한다.
+	<video src="../multi/trailer.ogv" autoplay controls muted></video>
+	<video width="200" height="130" controls>	
+		<source src="../multi/trailer.mp4" type="video/mp4">
+		<source src="../multi/trailder.ogv" type="video/ogg">
+	</video>
+</body>
+</html>

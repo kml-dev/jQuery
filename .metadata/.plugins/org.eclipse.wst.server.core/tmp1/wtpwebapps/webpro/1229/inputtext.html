@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+	function calc() {
+		x = document.getElementById("in1").value;
+		y = document.getElementById("in2").value;
+				
+		sum = parseInt(x)+parseInt(y);
+		
+// 		result1 = document.getElementById("out");
+// 		result2 = document.getElementById("res1");
+		
+// 		result1.value = sum;
+// 		result2.innerHTML = sum;
+		
+		document.getElementById("out").value = sum;
+		document.getElementById("res1").innerHTML = sum;
+		
+	}
+</script>
+<style type="text/css">
+	div{
+		height: 100px;
+		border: 1px solid blue;
+		padding: 10px;
+		margin: 20px;
+	}
+</style>
+</head>
+<body>
+<pre>
+input태그에서 입력한 값 가져오기
+input 요소 - id가 in1인 요소에 접근하여 값 가져오기
+x = document.getElementById("in1").value;
+- value를 이용, 문자열을 리턴, parseInt()를 이용하여 정수로 변환
+
+input요소에 결과 값 출력
+result1 = document.getElementById("out");
+result1.value = sum;
+
+</pre>
+	입력1 <input id="in1" type="text"><br>
+	입력2 <input id="in2"><br>
+	
+	<br>
+	결과 <input id="out"><br>
+	<div id="res1"></div>
+	<input type="button" value="확인" onclick="calc()">
+</body>
+</html>

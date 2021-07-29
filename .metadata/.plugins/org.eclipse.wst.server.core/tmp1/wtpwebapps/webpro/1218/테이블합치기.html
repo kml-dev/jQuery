@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>테이블 합치기</title>
+		<style>
+			#tab1{
+				margin : 40px;
+				border : 2px solid blue;
+			}
+			
+			#tab1 td{
+				width : 200px;
+				height : 40px;
+				text-align : center;
+			}
+			caption{
+				font-size : 2.5em;
+				/*margin-top : 20px;
+				margin-bottom : 20px;*/
+				margin : 20px;
+				caption-side : bottom;
+			}
+			
+			#tab2{
+				margin : 40px;
+				border : 3px solid navy;
+				
+			}
+			#tab2 td{
+				width : 100px;
+				height : 60px;
+			}
+			
+			#tab3{
+				border : 2px solid blue;
+				margin : 40px;
+			}
+			
+			#tab3 td{
+				width : 100px;
+				height : 40px;
+				text-align :center;
+			}
+			
+			#tab3 #td1{
+				width : 200px;
+			}
+			#tab3 .td3{
+				text-align : left;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table id="tab1" border="1">
+			<caption>
+				재밌는 영화
+			</caption>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			
+			<tr>
+				<td rowspan="2">1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			
+			<tr>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			
+			<tr>
+				<td colspan="3">1</td>
+			</tr>
+		
+		</table>
+		
+		<hr>
+		
+		<table id="tab2" border="1">
+			<tr>
+				<td colspan="2"></td>
+				<td colspan="2"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td colspan="4"></td>
+				<td colspan="2"></td>
+			</tr>
+			
+			<tr>
+				<td colspan="4"></td>
+				<td rowspan="2" colspan="2"></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		
+		<hr>
+		
+		<table id="tab3" border="1">
+			<tr>
+				<td colspan="5">1</td>
+			</tr>
+			
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td id="td1">3</td>
+				<td>4</td>
+				<td>5</td>
+			</tr>
+			
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>			
+			</tr>
+			
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td class="td3">3</td>
+				<td>4</td>
+				<td>5</td>
+			</tr>
+			
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td class="td3">3</td>
+				<td>4</td>
+				<td>5</td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

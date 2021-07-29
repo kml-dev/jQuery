@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	<title>type 속성 연습</title>
+	<style>
+		input[type=image]{
+			width : 20px;
+			height : 20px;
+			border : 1px solid green;
+			vertical-align : bottom;			
+		}
+	</style>
+ </head>
+  <body>
+   <div>
+  	<form action="typetest.jsp" method="post">
+  		아이디<input name="id"><br>
+  		이름<input type="text" name="name"><br>
+  		비밀번호<input type="password" name="pass"><br>
+  		<input type="hidden" name="check" value="0"><br>
+  		성별 
+  			<input type="radio" name="gender" value="남자" checked="checked">남자
+  			<input type="radio" name="gender" value="여자">여자<br>
+  		취미
+  			<input type="checkbox" name="like" value="운동">운동
+  			<input type="checkbox" name="like" value="독서">독서
+  			<input type="checkbox" name="like" value="음악">음악
+  			<input type="checkbox" name="like" value="영화보기">영화보기
+  			<input type="checkbox" name="like" value="그림그리기">그림그리기
+  			<br>
+  		첨부파일: <input type="file" name="file"><br>	
+  		<input type="submit">
+  		<input type="reset">
+  		<input type="image" src="../images/check.jpg" >
+	</form>
+   </div>
+  </body>
+</html>	

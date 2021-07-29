@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+pre{
+	background : lightblue;
+	font-size : 1.2em;
+	border : 1px dotted green;
+	padding : 10px;
+	
+}
+img{
+	width : 200px;
+	height : 150px;
+	
+}

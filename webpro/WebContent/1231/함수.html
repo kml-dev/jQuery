@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	input[type=button]{
+		margin-top : 10px;
+	}
+</style>
+<script type="text/javascript">
+	function calc(a){
+		x = document.getElementById("ix").value;
+		y = document.getElementById("iy").value;
+		
+		x = parseInt(x);
+		y = parseInt(y);
+		
+		switch(a){
+			case "+":
+				r = add(x,y)
+				break;
+			case "-":
+				r = sub(x,y);
+				break;
+			case "*":
+				r = mul(x,y);
+				break;
+			case "/":
+				r = div(x,y);
+				break;
+		}
+		document.getElementById("result1").innerHTML = r;
+	}
+	
+	function calc2(a){
+		x = document.getElementById("ix").value;
+		y = document.getElementById("iy").value;
+		
+		x = parseInt(x);
+		y = parseInt(y);
+		
+		switch(a){
+			case "+":
+				r = add(x,y)
+				break;
+			case "-":
+				r = sub(x,y);
+				break;
+			case "*":
+				r = mul(x,y);
+				break;
+			case "/":
+				r = div(x,y);
+				break;
+		}
+		print(a);
+	}
+	function add(a,b){
+		var res = (a+b);
+		return res;
+	}
+	function sub(a,b){
+		var res = (a-b);
+		return res;
+	}
+	function mul(a,b){
+		var res = a*b;
+		return res;
+	}
+	function div(a,b){
+		var res = a/b;
+		return res;
+	}
+	
+	function print(a){
+		result = document.getElementById("result2");
+		result.innerHTML = x + a + y + "=" + r;
+	}
+</script>
+</head>
+<body>
+<pre>
+input 태그에 입력한 값을 script에서 사용하기 위해서는 value
+</pre>
+x : <input type="text" id="ix"><br>
+y : <input type="text" id="iy"><br>
+<input type="button" value="더하기" onclick="calc('+')">
+<input type="button" value="빼기" onclick="calc('-')">
+<input type="button" value="곱하기" onclick="calc('*')">
+<input type="button" value="나누기" onclick="calc('/')">
+<div id="result1"></div>
+<br>
+<input type="button" value="더하기" onclick="calc2('+')">
+<input type="button" value="빼기" onclick="calc2('-')">
+<input type="button" value="곱하기" onclick="calc2('*')">
+<input type="button" value="나누기" onclick="calc2('/')">
+<div id="result2"></div>
+</body>
+</html>

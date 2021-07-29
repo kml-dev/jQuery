@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+
+window.onload = function(){
+		x = parseInt(prompt("첫번째 숫자 입력 : "));
+		y = parseInt(prompt("두번째 숫자 입력 : "));
+		z = prompt("연산자 입력 : ");
+		
+		if(z == "+"){
+			res = x + y;	
+		}else if(z == "-"){
+			res = x - y;
+		}else if(z == "*"){
+			res = x*y;
+		}else if(z == "/"){
+			res = x/y;
+		}
+		
+
+		resStr = "입력 1: " + x + "<br>";
+		resStr += "입력 2 : " + y + "<br>";
+		resStr += "입력 3 : " + z + "<br>";
+		resStr += "결과 : " + res + "<br>";
+		
+		document.getElementById("result1").value = res;
+		document.getElementById("result2").innerHTML = resStr;
+}		
+		
+</script>
+<style type="text/css">
+	div{
+		height: 100px;
+		border: 1px solid blue;
+		margin: 10px;
+		padding: 20px;
+	}
+</style>
+</head>
+<body>
+<pre>
+숫자 2개와 연산자 1개 입력받음 
+연산자의 종류에 따라서 연산이 이루어짐
+연산결과를 id가 result인 div요소에 출력
+
+window.onload = function(){
+	body태그의 요소들이 document객체로 생성되고 window에 로드되었을 때
+	script를 수행한다
+}
+</pre>
+	<input id="result1" type="text">
+	<div id="result2"></div>
+<!-- 	<button type="button" onclick="calc()">계산</button> -->
+</body>
+</html>

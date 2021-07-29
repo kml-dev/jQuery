@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<link rel="shortcut icon" type="image/x-icon" href="../images/aa.ico?1"/>
+<style type="text/css">
+	div{
+		height: auto;
+	}
+	#result2{
+		height: 500px;
+	}
+	.a{
+		float: left;
+		width: 100px;
+		height: auto;
+		border: 2px dotted orange;
+		margin: 3px;
+		padding: 5px;
+	}
+	table{
+		border: 2px solid blue;
+		border-spacing : 20px;
+	}
+	td{
+		width : 50px;
+		height: 40px;
+		text-align: center;
+		padding: 5px;
+	}
+</style>
+<script type="text/javascript">
+	function gugu(){
+		dan = parseInt(prompt("단 입력 : "));
+		
+		res = "";
+		for(i = 1; i < 10; i++){
+			res += dan + "*" + i + " = " + dan*i+"<br>";
+		}
+		document.getElementById("result1").innerHTML = res;
+	}
+	
+	function gugu2(){
+		
+		res = "";
+		for(i = 2; i < 10; i++){
+			res += "<div class='a'>"
+			res += i + "단" + "<br>";
+			for(j = 1; j < 10; j++){
+				res += i + " X " + j + " = " + i*j+"<br>";
+			}
+			res += "</div>"
+		}
+		document.getElementById("result2").innerHTML = res;
+	}
+	
+	function gugu3(){
+		
+		res = "<table border='1'>";
+		for(i = 1; i < 10; i++){
+			res += "<tr><td>"+ i +"</td>";
+			for(j = 2; j < 10; j++){
+				res += "<td>"+ i*j +"</td>";
+			}
+			res += "</tr>";
+		}
+		res += "</table>";
+		
+		result = document.querySelector("#result3");
+		result.innerHTML = res;
+	}
+</script>
+</head>
+<body>
+<pre>
+구구단 출력
+버튼을 클릭하면 구구단 수를 입력
+입력한 단의 구구단을 출력한다
+
+</pre>
+<button id="btn1" onclick="gugu()">확인</button>
+<div id="result1"></div>
+<pre>
+다중 반복문을 이용한 구구단
+
+</pre>
+<button id="btn2" onclick="gugu2()">확인</button>
+<div id="result2"></div>
+
+<pre>
+테이블을 이용한 구구단 출력
+첫번째 for에서 tr을 구성
+두번째 for에서 각각의 td를 구성한다
+</pre>
+<button id="btn3" onclick="gugu3()">확인</button>
+<div id="result3"></div>
+</body>
+</html>

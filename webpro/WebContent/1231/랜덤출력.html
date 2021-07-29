@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+	div{
+		height: auto;
+	}
+</style>
+<script type="text/javascript">
+	function proc1(kk){
+		kk.style.display = "none";
+		a = setInterval(function(){
+			var res = "";
+			for(i = 0; i < 6; i++){
+				res += "\t" + parseInt(Math.random()*46 + 1);
+			}	
+			res += "<br>";
+			print(res);
+			console.log(a);
+		},1000);
+	}
+	
+	function proc2(){
+		clearInterval(a);
+		document.getElementById("btn1").style.display = "inline";
+		//document.getElementsByTagName("btn1")[0].style.display = "inline";
+		//document.querySelector("input").style.display = "inline";
+		//document.querySelector("#btn1").style.display = "inline";
+	}
+	
+	function print(r){
+		document.getElementById("result1").innerHTML += r;
+	}
+</script>
+</head>
+<body>
+<pre>
+정해진 시간 간격으로, 정해진 시간이 경과할 때마다 실행하기
+setInterval(function(){},1000)
+</pre>
+<input id="btn1" type="button" value="시작" onclick="proc1(this)">&nbsp;
+<input type="button" value="종료" onclick="proc2()"><br>
+<div id="result1"></div>
+</body>
+</html>

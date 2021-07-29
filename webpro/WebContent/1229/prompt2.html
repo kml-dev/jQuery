@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+	function calc() {
+		// 두개의 정수를 입력 받는다
+		x = parseInt(prompt("정수를 입력하시오","정수로"));
+		y = parseInt(prompt("정수를 입력하시오","정수로"));
+		
+		vd1 = document.getElementById("id");
+		sum = x+y;
+		
+		vd1.innerHTML = "입력1 : " + x + "<br> 입력2 : " + y +"<br> 결과 : " + sum;
+	}
+</script>
+</head>
+<body>
+<pre>
+입력: prompt
+리턴 결과 : string
+
+parseInt()함수를 이용하여 정수로 변환한다
+ex) x = parseInt(prompt("정수를 입력하시오","정수로"));
+
+</pre>
+	<button type="button" onclick="calc()">확인</button>
+	<br>
+	<div id="id"></div>
+</body>
+</html>

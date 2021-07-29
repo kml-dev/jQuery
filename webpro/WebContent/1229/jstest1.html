@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css" type="text/css">
+<script type="text/javascript">
+	var x = "Hello World";
+	
+	function proc1(){
+		// 이미 생성되어 있는 document를 다 지우고 새로운 document에 출력한다
+		// document.write(x);
+		
+		// 랜덤 색상 발생
+		var cr = parseInt(Math.random()*256);
+		var cg = parseInt(Math.random()*256);
+		var cb = parseInt(Math.random()*256);
+		
+		//var vdiv = document.getElementById("d1");
+		//vdiv.style.background = "rgb(" + cr + "," + cg + "," + cb + ")"
+		// vidv
+		
+		var vdiv2 = document.getElementsByTagName("div");
+		vdiv2[0].style.background = "rgb(" + cr + "," + cg + "," + cb + ")"
+	}
+	
+</script>
+<style type="text/css">
+	div{
+		height: 100px;
+		border: 1px solid blue;
+		margin-bottom: 5px;
+	}
+</style>
+</head>
+<body>
+<pre>
+스크립트에서 document객체의 요소 (body의 요소)로 접근하기 위해서
+document.getElementById("id이름");
+document.getElementByTagName("태그이름");  : 배열을 리턴한다
+document.getElementByName("name");  : 배열을 리턴한다
+document.getElementByClassName("class이름")
+	
+ECMA2015 ECMA6 - 스크립트의 표준 번호
+document.querySelector()     : 같은 이름으로 여러개의 요소가 있어도 첫번째 요소만 접근 
+document.querySelectorAll()  : 같은 이름으로 되어 있는 모든 요소에 접근, 배열을 리턴한다.
+</pre>
+	<div id="d1"></div>
+	<button id="but1" class="bb" type="button" onclick="proc1()">확인</button>
+	
+</body>
+</html>
